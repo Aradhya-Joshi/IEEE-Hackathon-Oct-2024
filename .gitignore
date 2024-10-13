@@ -43,4 +43,4 @@ app.*.map.json
 /android/app/release
 
 # Removed the assets folder.
-assets
+assets/.env
