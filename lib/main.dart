@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:ieee_hackahon/home.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await dotenv.load(fileName: "assets/.env");
 
   // Set the status bar and navigation bar colors
   SystemChrome.setSystemUIOverlayStyle(

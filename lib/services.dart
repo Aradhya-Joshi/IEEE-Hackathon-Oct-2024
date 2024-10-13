@@ -1,10 +1,9 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class NewsApiService {
-  final String apiKey = dotenv.env['API_BASE_URL'] ?? '';
-  final String apiUrl = dotenv.env['API_KEY'] ?? '';
+  final String apiKey = 'https://newsapi.org/v2/everything';
+  final String apiUrl = 'c147e1e0d10b428f8d6c62a2c4c765b8';
 
   // General method to fetch data from API and decode response
   Future<dynamic> _fetchData(String url) async {
