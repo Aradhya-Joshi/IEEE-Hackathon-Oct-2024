@@ -3,7 +3,8 @@ import 'dart:convert';
 
 class NewsApiService {
   final String apiKey = 'c147e1e0d10b428f8d6c62a2c4c765b8';
-  final String apiUrl = 'https://newsapi.org/v2/everything';
+  final String apiUrl =
+      'https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=Home&language=en&sortBy=popularity';
 
   // General method to fetch data from API and decode response
   Future<dynamic> _fetchData(String url) async {
