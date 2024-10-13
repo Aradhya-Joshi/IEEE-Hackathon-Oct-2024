@@ -1,14 +1,19 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class NewsApiService {
-  final String apiKey = dotenv.env['API_BASE_URL'] ?? '';
-  final String apiUrl = dotenv.env['API_KEY'] ?? '';
+  final String apiKey = 'c147e1e0d10b428f8d6c62a2c4c765b8';
+  final String apiUrl = 'https://newsapi.org/v2/everything';
 
   // General method to fetch data from API and decode response
   Future<dynamic> _fetchData(String url) async {
-    final response = await http.get(Uri.parse(url));
+    final response = await http.get(
+      Uri.parse(url),
+      headers: {
+        'X-Api-Key': apiKey,
+      },
+    );
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {
@@ -17,11 +22,11 @@ class NewsApiService {
   }
 
   // Fetch articles by query
-  Future<List<Article>> fetchArticles({String query = '2024-10-13'}) async {
+  Future<List<Article>> fetchArticles({String query = '2024-10-14'}) async {
     List<Article> articles = [];
 
     final data = await _fetchData(
-      '$apiUrl?q=$query&language=en&sortBy=popularity&apiKey=$apiKey',
+      '$apiUrl?q=$query&language=en&sortBy=popularity',
     );
 
     for (final item in data['articles']) {
