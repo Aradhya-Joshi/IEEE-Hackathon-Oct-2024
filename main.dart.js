@@ -73230,7 +73230,7 @@ while(true)switch(s){case 0:g=A.b([],t.QE)
 f=J
 e=J
 s=3
-return A.S(p.tV("https://newsapi.org/v2/everything?q="+a+"&language=en&sortBy=popularity"),$async$w4)
+return A.S(p.tV("https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=Home&language=en&sortBy=popularity?q="+a+"&language=en&sortBy=popularity"),$async$w4)
 case 3:o=f.aA(e.iH(c,"articles"))
 case 4:if(!o.v()){s=5
 break}n=o.gJ()
