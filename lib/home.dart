@@ -140,8 +140,50 @@ class _MyHomePageState extends State<MyHomePage> {
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
-            return Center(
-              child: Text('Error: ${snapshot.error}'),
+            return Column(
+              children: [
+                Text(
+                  'Error: ${snapshot.error}',
+                ),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    if (constraints.maxWidth > 800) {
+                      return GridView.builder(
+                        shrinkWrap: true,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio: 0.75,
+                          mainAxisExtent: 350,
+                        ),
+                        itemCount: 1,
+                        itemBuilder: (context, index) {
+                          return NewsCardBigScreen(
+                            article: Article(
+                              title: 'News Title',
+                              description: "News description",
+                              url: 'News url',
+                            ),
+                          );
+                        },
+                      );
+                    } else {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 1,
+                        itemBuilder: (context, index) {
+                          return NewsCardSmallScreen(
+                            article: Article(
+                                title: 'News Title',
+                                description: "News description",
+                                url: 'News url'),
+                          );
+                        },
+                      );
+                    }
+                  },
+                ),
+              ],
             );
           } else if (snapshot.hasData && snapshot.data != null) {
             final articles = snapshot.data!;
